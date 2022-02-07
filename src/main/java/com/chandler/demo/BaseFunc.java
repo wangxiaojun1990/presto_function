@@ -9,7 +9,7 @@ import io.airlift.slice.Slices;
 import java.util.Locale;
 
 
-public class BaseFunc  {
+public class BaseFunc {
 
     private static Faker faker = new Faker(Locale.CHINA);
 
@@ -30,5 +30,10 @@ public class BaseFunc  {
     }
 
 
-
+    @ScalarFunction(value = "datagen_int")
+    @Description("Returns random int value")
+    @SqlType(StandardTypes.INTEGER)
+    public static int DatagenInt(@SqlType(StandardTypes.INTEGER) Integer max) {
+        return max;
+    }
 }
