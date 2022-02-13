@@ -11,6 +11,7 @@ public class MyFuncPlugin implements Plugin {
         return ImmutableSet.<Class<?>>builder()
                 .add(BaseFunc.class)
                 .add(AddressFunction.class)
+                .add(PersionInfoFunction.class)
                 .build();
     }
 }
