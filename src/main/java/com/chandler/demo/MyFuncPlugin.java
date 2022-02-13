@@ -10,6 +10,7 @@ public class MyFuncPlugin implements Plugin {
     public Set<Class<?>> getFunctions() {
         return ImmutableSet.<Class<?>>builder()
                 .add(BaseFunc.class)
+                .add(AddressFunction.class)
                 .build();
     }
 }
