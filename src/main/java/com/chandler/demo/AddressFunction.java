@@ -10,54 +10,48 @@ import io.airlift.slice.Slices;
 import java.util.Locale;
 
 public class AddressFunction {
-    private static Faker FAKER = new Faker(Locale.CHINA);
+    private static final Faker FAKER = new Faker(Locale.CHINA);
 
 
-    @ScalarFunction(value = "datagen_address", calledOnNullInput = true)
+    @ScalarFunction(value = "datagen_address", deterministic = false)
     @Description("Returns random address string")
-    @TypeParameter("T")
     @SqlType(StandardTypes.VARCHAR)
-    public static Slice DatagenAddress(@SqlNullable @SqlType("T") Object value) {
+    public static Slice DatagenAddress() {
         return Slices.utf8Slice(FAKER.address().fullAddress());
     }
 
-    @ScalarFunction(value = "datagen_country", calledOnNullInput = true)
+    @ScalarFunction(value = "datagen_country", deterministic = false)
     @Description("Returns random address string")
-    @TypeParameter("T")
     @SqlType(StandardTypes.VARCHAR)
-    public static Slice DatagenCountry(@SqlNullable @SqlType("T") Object value) {
+    public static Slice DatagenCountry() {
         return Slices.utf8Slice(FAKER.address().country());
     }
 
-    @ScalarFunction(value = "datagen_state", calledOnNullInput = true)
+    @ScalarFunction(value = "datagen_state", deterministic = false)
     @Description("Returns random address string")
-    @TypeParameter("T")
     @SqlType(StandardTypes.VARCHAR)
-    public static Slice DatagenState(@SqlNullable @SqlType("T") Object value) {
+    public static Slice DatagenState() {
         return Slices.utf8Slice(FAKER.address().state());
     }
 
-    @ScalarFunction(value = "datagen_city", calledOnNullInput = true)
+    @ScalarFunction(value = "datagen_city", deterministic = false)
     @Description("Returns random city string")
-    @TypeParameter("T")
     @SqlType(StandardTypes.VARCHAR)
-    public static Slice DatagenCity(@SqlNullable @SqlType("T") Object value) {
+    public static Slice DatagenCity() {
         return Slices.utf8Slice(FAKER.address().city());
     }
 
-    @ScalarFunction(value = "datagen_county", calledOnNullInput = true)
+    @ScalarFunction(value = "datagen_county", deterministic = false)
     @Description("Returns random county string")
-    @TypeParameter("T")
     @SqlType(StandardTypes.VARCHAR)
-    public static Slice DatagenCounty(@SqlNullable @SqlType("T") Object value) {
+    public static Slice DatagenCounty() {
         return Slices.utf8Slice(FAKER.address().county());
     }
 
-    @ScalarFunction(value = "datagen_postcode", calledOnNullInput = true)
+    @ScalarFunction(value = "datagen_postcode", deterministic = false)
     @Description("Returns random postcode string")
-    @TypeParameter("T")
     @SqlType(StandardTypes.VARCHAR)
-    public static Slice DatagenZipCode(@SqlNullable @SqlType("T") Object value) {
+    public static Slice DatagenZipCode() {
         return Slices.utf8Slice(FAKER.regexify("(0[1234567]|1[012356]|2[01234567]|3[0123456]|4[01234567]|5[1234567]|6[1234567]|7[012345]|8[013456])\\d{4}"));
     }
 

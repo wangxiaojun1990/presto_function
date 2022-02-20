@@ -12,6 +12,7 @@ public class MyFuncPlugin implements Plugin {
                 .add(BaseFunc.class)
                 .add(AddressFunction.class)
                 .add(PersionInfoFunction.class)
+                .add(InternetFunction.class)
                 .build();
     }
 }
