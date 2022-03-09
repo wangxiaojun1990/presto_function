@@ -1,11 +1,14 @@
 package com.chandler.demo;
 
-import com.facebook.presto.common.type.StandardTypes;
-import com.facebook.presto.spi.function.*;
+
 import com.github.javafaker.Faker;
 import com.github.javafaker.PhoneNumber;
 import io.airlift.slice.Slice;
 import io.airlift.slice.Slices;
+import io.prestosql.spi.function.Description;
+import io.prestosql.spi.function.ScalarFunction;
+import io.prestosql.spi.function.SqlType;
+import io.prestosql.spi.type.StandardTypes;
 
 import java.util.Locale;
 

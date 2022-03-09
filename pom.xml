@@ -8,13 +8,21 @@
     <artifactId>presto_function</artifactId>
     <version>1.0-SNAPSHOT</version>
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/com.facebook.presto/presto-spi -->
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/com.facebook.presto/presto-spi &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>com.facebook.presto</groupId>-->
+<!--            <artifactId>presto-spi</artifactId>-->
+<!--            <version>0.269</version>-->
+<!--            <scope>provided</scope>-->
+<!--        </dependency>-->
+        <!-- https://mvnrepository.com/artifact/io.prestosql/presto-spi -->
         <dependency>
-            <groupId>com.facebook.presto</groupId>
+            <groupId>io.prestosql</groupId>
             <artifactId>presto-spi</artifactId>
-            <version>0.269</version>
+            <version>333</version>
             <scope>provided</scope>
         </dependency>
+
         <dependency>
             <groupId>com.github.javafaker</groupId>
             <artifactId>javafaker</artifactId>

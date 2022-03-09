@@ -1,7 +1,7 @@
 package com.chandler.demo;
 
-import com.facebook.presto.spi.Plugin;
 import com.google.common.collect.ImmutableSet;
+import io.prestosql.spi.Plugin;
 
 import java.util.Set;
 

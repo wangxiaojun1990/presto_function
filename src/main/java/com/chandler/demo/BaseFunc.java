@@ -1,11 +1,13 @@
 package com.chandler.demo;
 
-import com.facebook.presto.common.type.*;
-import com.facebook.presto.spi.function.*;
-import com.facebook.presto.spi.function.TypeParameter;
 import com.github.javafaker.Faker;
 import io.airlift.slice.Slice;
 import io.airlift.slice.Slices;
+import io.prestosql.spi.function.Description;
+import io.prestosql.spi.function.ScalarFunction;
+import io.prestosql.spi.function.SqlNullable;
+import io.prestosql.spi.function.SqlType;
+import io.prestosql.spi.type.StandardTypes;
 import jdk.nashorn.internal.ir.CallNode;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -29,7 +31,7 @@ public class BaseFunc {
     private static final Faker FAKER = new Faker(Locale.CHINA);
 
 
-    @ScalarFunction(value = "datagen_int", deterministic = false, calledOnNullInput = true)
+    @ScalarFunction(value = "datagen_int", deterministic = false)
     @Description("Returns random int value")
     @SqlNullable
     @SqlType(StandardTypes.INTEGER)
@@ -55,7 +57,7 @@ public class BaseFunc {
     }
 
 
-    @ScalarFunction(value = "datagen_alphabetic", deterministic = false, calledOnNullInput = true)
+    @ScalarFunction(value = "datagen_alphabetic", deterministic = false)
     @Description("Returns random alphabetic string value")
     @SqlNullable
     @SqlType(StandardTypes.VARCHAR)
@@ -65,7 +67,7 @@ public class BaseFunc {
         return Slices.utf8Slice(RandomStringUtils.randomAlphabetic(min.intValue(), max.intValue()));
     }
 
-    @ScalarFunction(value = "datagen_alphanumeric", deterministic = false, calledOnNullInput = true)
+    @ScalarFunction(value = "datagen_alphanumeric", deterministic = false)
     @Description("Returns random alphanumeric string value")
     @SqlNullable
     @SqlType(StandardTypes.VARCHAR)
@@ -75,7 +77,7 @@ public class BaseFunc {
         return Slices.utf8Slice(RandomStringUtils.randomAlphanumeric(min.intValue(), max.intValue()));
     }
 
-    @ScalarFunction(value = "datagen_numeric", deterministic = false, calledOnNullInput = true)
+    @ScalarFunction(value = "datagen_numeric", deterministic = false)
     @Description("Returns random numeric string value")
     @SqlNullable
     @SqlType(StandardTypes.VARCHAR)
@@ -85,7 +87,7 @@ public class BaseFunc {
         return Slices.utf8Slice(RandomStringUtils.randomNumeric(min.intValue(), max.intValue()));
     }
 
-    @ScalarFunction(value = "datagen_ascii", deterministic = false, calledOnNullInput = true)
+    @ScalarFunction(value = "datagen_ascii", deterministic = false)
     @Description("Returns random ascii string value")
     @SqlNullable
     @SqlType(StandardTypes.VARCHAR)
@@ -95,7 +97,7 @@ public class BaseFunc {
         return Slices.utf8Slice(RandomStringUtils.randomAscii(min.intValue(), max.intValue()));
     }
 
-    @ScalarFunction(value = "datagen_decimal", deterministic = false, calledOnNullInput = true)
+    @ScalarFunction(value = "datagen_decimal", deterministic = false)
     @Description("Returns random decimal string value")
     @SqlNullable
     @SqlType(StandardTypes.VARCHAR)
@@ -115,7 +117,7 @@ public class BaseFunc {
     }
 
 
-    @ScalarFunction(value = "datagen_enum", deterministic = false, calledOnNullInput = true)
+    @ScalarFunction(value = "datagen_enum", deterministic = false)
     @Description("Returns random enum value")
     @SqlNullable
     @SqlType(StandardTypes.VARCHAR)
@@ -126,7 +128,7 @@ public class BaseFunc {
         return Slices.utf8Slice(enums[FAKER.random().nextInt(enums.length)]);
     }
 
-    @ScalarFunction(value = "datagen_datetime", deterministic = false, calledOnNullInput = true)
+    @ScalarFunction(value = "datagen_datetime", deterministic = false)
     @Description("Returns random datetime value")
     @SqlNullable
     @SqlType(StandardTypes.TIMESTAMP)
@@ -140,7 +142,7 @@ public class BaseFunc {
     }
 
 
-    @ScalarFunction(value = "datagen_date", deterministic = false, calledOnNullInput = true)
+    @ScalarFunction(value = "datagen_date", deterministic = false)
     @Description("Returns random date value")
     @SqlNullable
     @SqlType(StandardTypes.DATE)
@@ -194,14 +196,14 @@ public class BaseFunc {
         return Slices.utf8Slice(FAKER.crypto().sha512());
     }
 
-    @ScalarFunction(value = "datagen_numberify", deterministic = false, calledOnNullInput = true)
+    @ScalarFunction(value = "datagen_numberify", deterministic = false)
     @Description("Returns random numberify value")
     @SqlType(StandardTypes.VARCHAR)
     public static Slice DatagenNumerify(@SqlNullable @SqlType(StandardTypes.VARCHAR) Slice value) {
         return Slices.utf8Slice(FAKER.numerify(value.toStringUtf8()));
     }
 
-    @ScalarFunction(value = "datagen_letterify", deterministic = false,calledOnNullInput = true)
+    @ScalarFunction(value = "datagen_letterify", deterministic = false)
     @Description("Returns random letterify value")
     @SqlType(StandardTypes.VARCHAR)
     public static Slice DatagenLetterify(@SqlNullable @SqlType(StandardTypes.VARCHAR) Slice value,
@@ -226,6 +228,6 @@ public class BaseFunc {
 //        System.out.println(FAKER.crypto().sha512());
 //        System.out.println(FAKER.numerify("LC_#########".toString()));
 //        System.out.println(Slices.utf8Slice(FAKER.numerify("LC_#########".toString())));
-        System.out.println(VarcharType.VARCHAR.getJavaType());
+//        System.out.println(VarcharType.VARCHAR.getJavaType());
     }
 }
